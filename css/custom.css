@@ -1,0 +1,33 @@
+
+.banner {
+    display: block;
+    min-height: 695px;
+    width: 100%;
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+.banner-text {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+
+.response-message {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #555;
+    font-weight: 500;
+}
+
+.simsage-query {
+    padding: 10px;
+    width: 300px;
+    border-radius: 10px;
+}

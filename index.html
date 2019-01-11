@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimSage Example Javascript Client</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+
+<div class="banner align-content-center">
+    <div class="banner-text">
+        This is a Javascript Client for testing SimSage.  Please make sure to change <br/>
+        <i>const server = 'http://localhost:9000';</i><br/>
+        below to suit your needs and point to your own Server.
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 input-col left">
+                <input class="simsage-query" id="query" name="query" placeholder="enter your query here please"
+                       type="text" onkeypress="keypress(event)">
+                <button class="btn submit" onclick="ask();">ask</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 input-col left response-message">
+                <label id="response" class="response-message"></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- setup javascript -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/simsage.js"></script>
+
+<script language="javascript">
+
+    // server endpoint - change this for your own settings / needs
+    const server = 'http://localhost:9000';
+
+    function ask() {
+        const query_text = document.getElementById('query').value.trim();
+        if (query_text.length <= 1) {
+            document.getElementById('response').innerHTML = 'Please enter a question first.';
+            document.getElementById('query').focus();
+        } else {
+            query(server, query_text, function(result_text) {
+                document.getElementById('response').innerHTML = result_text;
+            })
+        }
+    }
+
+    // knowledgeBase query enter key check
+    function keypress(event) {
+        if (event.keyCode === 13) {
+            ask();
+        }
+    }
+
+    // set focus
+    $("#query").focus();
+
+</script>
+
+</body>
+</html>
